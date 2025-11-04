@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import ProgramCard from "@/components/ProgramCard";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 import beginnerImage from "@/assets/beginner-program.jpg";
 import homeImage from "@/assets/home-workout.jpg";
 import seniorImage from "@/assets/senior-program.jpg";
@@ -35,9 +36,9 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-subtle">
       <Hero />
       
-      <section className="py-20">
+      <section className="py-24">
         <div className="container px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4 animate-fade-in">
             <h2 className="text-3xl md:text-5xl font-bold">
               당신에게 맞는 프로그램을 찾아보세요
             </h2>
@@ -48,7 +49,13 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {programs.map((program, index) => (
-              <ProgramCard key={index} {...program} />
+              <div 
+                key={index} 
+                className="animate-scale-in"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <ProgramCard {...program} />
+              </div>
             ))}
           </div>
         </div>
@@ -56,18 +63,21 @@ const Index = () => {
       
       <Features />
       
-      <section className="py-20">
+      <section className="py-24">
         <div className="container px-4 md:px-6">
-          <div className="max-w-4xl mx-auto bg-gradient-to-r from-primary to-primary-glow rounded-3xl p-12 md:p-16 text-center text-primary-foreground">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <div className="max-w-4xl mx-auto bg-gradient-to-r from-primary to-primary-glow rounded-3xl p-12 md:p-16 text-center text-primary-foreground shadow-[0_0_60px_hsl(var(--primary)_/_0.3)] animate-fade-in">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 animate-float">
               오늘부터 건강한 변화를 시작하세요
             </h2>
             <p className="text-lg md:text-xl mb-8 opacity-95">
               첫 4주 프로그램을 무료로 체험해보세요
             </p>
-            <button className="bg-white text-primary px-10 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform">
+            <Button 
+              size="lg"
+              className="bg-white text-primary px-10 py-4 rounded-full text-lg font-semibold hover:scale-110 hover:shadow-2xl transition-all duration-300"
+            >
               지금 시작하기
-            </button>
+            </Button>
           </div>
         </div>
       </section>

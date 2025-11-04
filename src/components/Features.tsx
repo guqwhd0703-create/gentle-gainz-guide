@@ -40,13 +40,14 @@ const Features = () => {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="bg-card p-8 rounded-3xl border-2 hover:shadow-soft transition-all duration-300 hover:-translate-y-1 space-y-4"
+              className="group bg-card p-8 rounded-3xl border-2 hover:shadow-[0_8px_30px_hsl(var(--primary)_/_0.12)] transition-all duration-500 hover:-translate-y-2 space-y-4 hover:border-primary/30 animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                 <feature.icon className="w-7 h-7 text-primary-foreground" />
               </div>
               
-              <h3 className="text-xl font-bold">{feature.title}</h3>
+              <h3 className="text-xl font-bold group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
               <p className="text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
