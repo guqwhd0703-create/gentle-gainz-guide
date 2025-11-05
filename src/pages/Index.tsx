@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import beginnerImage from "@/assets/beginner-program.jpg";
 import homeImage from "@/assets/home-workout.jpg";
 import seniorImage from "@/assets/senior-program.jpg";
+import gymImage from "@/assets/gym-program.jpg";
 
 const programs = [
   {
@@ -15,6 +16,13 @@ const programs = [
     level: "입문",
     duration: "4주",
     image: beginnerImage
+  },
+  {
+    title: "헬스 트레이닝",
+    description: "헬스장에서 기구를 활용한 체계적인 근력 운동 프로그램입니다. 탄탄한 몸매와 강한 근력을 만들어보세요.",
+    level: "중급",
+    duration: "8주",
+    image: gymImage
   },
   {
     title: "홈트레이닝",
@@ -48,7 +56,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {programs.map((program, index) => (
               <div 
                 key={index} 
