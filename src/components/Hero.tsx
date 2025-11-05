@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-fitness.jpg";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       <div 
@@ -29,6 +32,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="text-lg px-8 py-6 rounded-full bg-gradient-to-r from-primary to-primary-glow hover:shadow-[0_0_40px_hsl(var(--primary-glow)_/_0.4)] hover:scale-105 transition-all duration-300"
+              onClick={() => navigate("/auth")}
             >
               무료로 시작하기
             </Button>
