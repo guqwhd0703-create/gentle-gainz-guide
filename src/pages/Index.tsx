@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import ProgramCard from "@/components/ProgramCard";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
+import ProgramRecommendation from "@/components/ProgramRecommendation";
 import { Button } from "@/components/ui/button";
 import beginnerImage from "@/assets/beginner-program.jpg";
 import homeImage from "@/assets/home-workout.jpg";
@@ -60,6 +61,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      <ProgramRecommendation />
       
       <Features />
       
