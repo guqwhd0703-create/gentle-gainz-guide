@@ -8,6 +8,7 @@ import { Calculator } from "lucide-react";
 const ProgramRecommendation = () => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+  const [age, setAge] = useState("");
   const [recommendation, setRecommendation] = useState<{
     bmi: number;
     category: string;
@@ -18,8 +19,9 @@ const ProgramRecommendation = () => {
   const calculateBMI = () => {
     const heightInMeters = parseFloat(height) / 100;
     const weightInKg = parseFloat(weight);
+    const ageNum = parseInt(age);
     
-    if (!heightInMeters || !weightInKg || heightInMeters <= 0 || weightInKg <= 0) {
+    if (!heightInMeters || !weightInKg || !ageNum || heightInMeters <= 0 || weightInKg <= 0 || ageNum <= 0) {
       return;
     }
 
@@ -28,14 +30,24 @@ const ProgramRecommendation = () => {
     let program = "";
     let description = "";
 
-    if (bmi < 18.5) {
+    // 나이대별, BMI별 맞춤 추천
+    if (ageNum >= 60) {
+      category = "시니어";
+      program = "시니어 건강 프로그램";
+      description = "관절에 무리가 가지 않는 안전한 운동으로 근력과 균형감각을 유지합니다.";
+    } else if (bmi < 18.5) {
       category = "저체중";
       program = "근육 증가 프로그램";
       description = "건강한 체중 증가와 근력 향상을 위한 맞춤 운동과 영양 관리를 제공합니다.";
     } else if (bmi < 23) {
       category = "정상";
-      program = "체력 향상 프로그램";
-      description = "현재 건강한 체중을 유지하면서 전반적인 체력과 지구력을 강화하는 프로그램입니다.";
+      if (ageNum < 30) {
+        program = "체력 강화 프로그램";
+        description = "현재 건강한 체중을 유지하면서 근력과 지구력을 최대한 끌어올립니다.";
+      } else {
+        program = "체력 유지 프로그램";
+        description = "건강한 체중을 유지하면서 전반적인 체력과 유연성을 강화합니다.";
+      }
     } else if (bmi < 25) {
       category = "과체중";
       program = "체중 관리 프로그램";
@@ -73,7 +85,18 @@ const ProgramRecommendation = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="age">나이</Label>
+                  <Input
+                    id="age"
+                    type="number"
+                    placeholder="예: 25"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    className="text-lg"
+                  />
+                </div>
                 <div className="space-y-2">
                   <Label htmlFor="height">키 (cm)</Label>
                   <Input
